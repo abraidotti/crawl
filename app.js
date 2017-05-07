@@ -11,6 +11,7 @@ const example = require("./example.js");
 
 const commands = {
     "hello": () => {print("world!\n");},
+    "look":  () => {print("You stare into the void.\n");},
     "quit":  () => {rl.close();},
     "exit":  () => {rl.close();},
     "test":  example.example,
