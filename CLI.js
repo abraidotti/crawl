@@ -16,12 +16,14 @@ function print(line) {
 
 function activateCLI (commands) {
     rl.on("line", (line) => {
-        let command = line.trim().toLowerCase();
-        if (command in commands) {
-            commands[command]();
-        } else {
-            print("Say what? I might have heard '" + line.trim()
-            + "'\n");
+        let args = line.trim().toLowerCase().split(" ");
+        if (args.length > 0) {
+            let command = args[0];
+            if (command in commands) {
+                commands[command](...args.slice(1));
+            } else {
+                print(`Say what? I don't know how to '${command}'.\n`);
+            }
         }
         rl.prompt();
     }).on("close", () => {
