@@ -15,6 +15,7 @@ function print(line) {
 }
 
 function activateCLI (commands) {
+    print("You have fallen into a dangerous cave. You need to find a way out. Type ‘help’ for a list of commands.\n")
     rl.on("line", (line) => {
         let args = line.trim().toLowerCase().split(" ");
         if (args.length > 0) {
