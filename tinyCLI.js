@@ -14,6 +14,9 @@ rl.on("line", (line) => {
     case "hello":
         process.stdout.write("world!\n");
         break;
+    case "look":
+        process.stdout.write("You stare into the void.\n");
+        break;
     case "quit":
         rl.close();
         break;
