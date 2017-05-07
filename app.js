@@ -9,6 +9,7 @@ const print = cli.print;
 
 const commands = {
     "hello": () => {print("world!\n");},
+    "look": () => {print("You stare into the void.");},
     "quit":  () => {rl.close();},
     "exit":  () => {rl.close();},
 };
