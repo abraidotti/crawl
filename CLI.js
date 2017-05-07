@@ -10,21 +10,26 @@ const rl = readline.createInterface({
     prompt: "> "
 });
 
+function print(line) {
+    process.stdout.write(line);
+}
+
 function activateCLI (commands) {
     rl.on("line", (line) => {
         let command = line.trim().toLowerCase();
         if (command in commands) {
             commands[command]();
         } else {
-            process.stdout.write("Say what? I might have heard '" + line.trim()
+            print("Say what? I might have heard '" + line.trim()
             + "'\n");
         }
         rl.prompt();
     }).on("close", () => {
-        process.stdout.write("Have a great day!\n\n");
+        print("Have a great day!\n\n");
         process.exit(0);
     });
 }
 
 exports.rl = rl;
+exports.print = print;
 exports.activateCLI = activateCLI;

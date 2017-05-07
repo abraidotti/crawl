@@ -4,10 +4,11 @@
 // instantiate cli
 const cli = require("./CLI");
 const rl = cli.rl;
+const print = cli.print;
 
 
 const commands = {
-    "hello": () => {process.stdout.write("world!\n");},
+    "hello": () => {print("world!\n");},
     "quit":  () => {rl.close();},
     "exit":  () => {rl.close();},
 };
