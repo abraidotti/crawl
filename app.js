@@ -6,12 +6,17 @@ const cli = require("./CLI");
 const rl = cli.rl;
 const print = cli.print;
 
+function example() {
+    for (let a in arguments) {
+        print(arguments[a]+ "\n");
+    }
+}
 
 const commands = {
     "hello": () => {print("world!\n");},
-    "look":  () => {print("You stare into the void.\n");},
     "quit":  () => {rl.close();},
     "exit":  () => {rl.close();},
+    "test":  example,
 };
 
 
