@@ -14,7 +14,8 @@ const commands = {
     "look":  () => {print("You stare into the void.\n");},
     "quit":  () => {rl.close();},
     "exit":  () => {rl.close();},
-    "test":  example.example,
+    "help": function(){print("I respond to the following commands: " + (Object.keys(this)).join(", ") + "\n");},
+    "test":  example.example
 };
 
 
