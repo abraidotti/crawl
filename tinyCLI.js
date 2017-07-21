@@ -9,25 +9,27 @@ const rl = readline.createInterface({
     prompt: "> "
 });
 
-rl.on("line", (line) => {
-    switch(line.trim().toLowerCase()) {
-    case "hello":
-        process.stdout.write("world!\n");
-        break;
-    case "look":
-        process.stdout.write("You stare into the void.\n");
-        break;
-    case "quit":
-        rl.close();
-        break;
-    case "exit":
-        rl.close();
-        break;
-    default:
-        process.stdout.write("Say what? I might have heard '" + line.trim()
-        + "'\n");
-        break;
+var commands = {
+    "hello": () => {return "world!\n";},
+    "look": () => {return "It seems someone spat here.\n";},
+    "taste": (s) => {return "You lick the " + s.join(" ")+ ".\n";},
+    "quit": () => {rl.close(); },
+    "exit": () => {rl.close(); },
+    "win": () => {process.stdout.write("YOU WIN!\n"); rl.close();},
+};
+
+function f(line) {
+    let message = "Say what? I might have heard '" + line.trim() + "'.\n";
+    let input = line.trim().toLowerCase().split(" ");
+    if (input[0] in commands) {
+        message = commands[input[0]](input.slice(1));
     }
+    return message;
+}
+
+rl.on("line", (line) => {
+    var message = f(line);
+    process.stdout.write(message);
     rl.prompt();
 }).on("close", () => {
     process.stdout.write("Have a great day!\n\n");
